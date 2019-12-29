@@ -1,4 +1,9 @@
 #TopBar {
     display: flex;
-    
+    justify-content: flex-end;
+    align-items: center;
+
+    span {
+        margin: 0 10px 0 5px;
+    }
 }

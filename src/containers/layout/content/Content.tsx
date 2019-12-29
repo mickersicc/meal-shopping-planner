@@ -1,11 +1,16 @@
 import React from 'react';
 
 import './Content.scss';
+import { Route, Switch } from 'react-router';
 
 const Content = (): JSX.Element => {
     return (
         <div id='Content'>
-            <p>Content</p>
+            <Switch>
+                <Route exact path='/'>
+                    <p>Home</p>
+                </Route>
+            </Switch>
         </div>
     );
 };

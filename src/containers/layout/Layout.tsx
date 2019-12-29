@@ -8,7 +8,6 @@ import Content from './content/Content';
 const Layout = (): JSX.Element => {
     return (
         <div id='Layout'>
-        <p>Layout</p>
             <TopBar />
             <Content />
             <Footer />

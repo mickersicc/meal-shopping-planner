@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
+import { Provider } from 'react-redux';
+
 import Layout from './containers/layout/Layout';
+import { store } from './store/store';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Layout />
-    </div>
+      <Provider store={store}>
+        <Layout />
+      </Provider>
   );
 }
 

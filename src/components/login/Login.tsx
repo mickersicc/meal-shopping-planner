@@ -1,10 +1,15 @@
 import React, { memo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import './Login.scss';
+import { loginAttemptAction, loginSuccessAction, loginFailureAction } from '../../store/actions/app.actions';
+import { login } from '../../shared/services/api.service';
+import { push } from 'connected-react-router';
 
 const Login = (): JSX.Element => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleUserNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setUserName(e.target.value);
@@ -14,8 +19,16 @@ const Login = (): JSX.Element => {
         setPassword(e.target.value);
     };
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
+        dispatch(loginAttemptAction(userName, password));
+        const result = await login(userName, password);
+        if (result.isSuccessful) {
+            dispatch(loginSuccessAction(result));
+            dispatch(push('/'));
+        } else {
+            dispatch(loginFailureAction(result));
+        }
     };
 
     return (

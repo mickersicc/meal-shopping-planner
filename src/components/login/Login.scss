@@ -1,0 +1,19 @@
+#login-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #login-form__fields {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        #login-form__submit-btn-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 100%;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import appReducer from '../reducers/app.reducer';
-import { APP_LOGIN_ATTEMPT, APP_LOGIN_SUCCESS } from '../types/app.types';
+import { APP_LOGIN_ATTEMPT, APP_LOGIN_SUCCESS, APP_LOGOUT } from '../types/app.types';
 import LoginRequest from '../../shared/models/requests/login-request.model';
 import App from '../../shared/models/app.model';
 import LoginResult from '../../shared/models/results/login-result.model';
@@ -40,5 +40,21 @@ describe('App Reducer', () => {
                 isLoggedIn: true
             }
         });
+    });
+
+    test('should update the state when a user logs out', () => {
+        const currentState = {
+            user: {
+                id: 'f1783298-7ddc-49c2-9355-1bf580293a7e',
+                firstName: 'test',
+                lastName: 'test',
+                isLoggedIn: true
+            }
+        };
+
+        expect(appReducer(currentState, {
+            type: APP_LOGOUT,
+            payload: null
+        }).user).toHaveProperty('isLoggedIn', false);
     });
 });

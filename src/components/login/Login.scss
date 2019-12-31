@@ -9,11 +9,16 @@
         justify-content: center;
         flex-direction: column;
 
+        input {
+            margin: 5px 0 5px 0;
+        }
+
         #login-form__submit-btn-container {
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
             width: 100%;
+            margin-top: 5px;
         }
     }
 }

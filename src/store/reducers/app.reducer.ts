@@ -14,6 +14,7 @@ export default function appReducer(state = initialState, action: AppActionTypes)
             }
         case APP_LOGIN_SUCCESS:
             session().setItem('app', action.payload.token);
+            session().setItem('user', action.payload);
             return {
                 ...state,
                 user: { ...action.payload.user }
@@ -24,6 +25,7 @@ export default function appReducer(state = initialState, action: AppActionTypes)
             }
         case APP_LOGOUT:
             session().removeItem('app');
+            session().removeItem('user');
             return {
                 ...state,
                 user: { ...new User() }

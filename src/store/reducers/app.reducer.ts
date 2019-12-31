@@ -6,7 +6,7 @@ import session from '../../shared/services/session.service';
 
 const initialState: App = new App();
 
-export default function appReducer(state = initialState, action: AppActionTypes): any {
+export default function appReducer(state = initialState, action: AppActionTypes): App {
     switch (action.type) {
         case APP_LOGIN_ATTEMPT:
             return {
